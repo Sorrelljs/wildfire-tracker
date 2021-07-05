@@ -9,8 +9,6 @@ const API_KEY = process.env.REACT_APP_KEY;
 const Map = ({ eventData, center, zoom }) => {
     const [locationInfo, setLocationInfo] = useState(null)
 
-    console.log(locationInfo)
-
     const markers = eventData.map((ev, index) => {
         if(ev.categories[0].id === 8){
             return <LocationMarker
@@ -18,8 +16,8 @@ const Map = ({ eventData, center, zoom }) => {
             lat={ev.geometries[0].coordinates[1]} 
             lng={ev.geometries[0].coordinates[0]}
             onClick={() => setLocationInfo({id: ev.id,
-             title: ev.title})}/>
-        } 
+                title: ev.title, type: ev.categories[0].title})}/>
+            } 
         return null
     })
     
